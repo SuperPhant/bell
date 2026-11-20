@@ -31,9 +31,10 @@ them; a keeper liquidates positions that are really underwater. The difference i
    scenario is an `eth_call` to the live market with what-if state (a new print on the price mirror, the market's record
    of prints, the oracle registry's pause flag, a later block time), so the verdicts come from the deployed contract. No
    wallet or gas needed.
-2. To borrow yourself, open **Borrow & lend** and connect a wallet (the app adds Base Vibenet). Press
-   **Get test ETH (gas)** and **Get 10,000 tUSD** (no captcha, no sign-up), buy a test stock at its Chainlink price,
-   press **Deposit all**, then **Borrow**. Or supply test USD to the pool and earn the interest.
+2. To borrow yourself, open **Borrow & lend** and connect a wallet. The app runs on Base Sepolia; the menu at the top
+   switches to Base Vibenet, where **Get test ETH (gas)** is one click (no captcha, no sign-up). On either chain press
+   **Get 10,000 tUSD**, buy a test stock at its Chainlink price, press **Deposit all**, then **Borrow**. Or supply test
+   USD to the pool and earn the interest.
 
 ![The unfair-liquidation tester on the live deployment](docs/tester.png)
 
@@ -88,8 +89,10 @@ Interest follows a linear model: 2% APR base plus 20% APR x utilization. Lenders
 
 ## How it works
 
-The live demo runs on **Base Vibenet** (chain id 84538453), Base's official preview testnet, whose faucet needs no
-captcha, so anyone can try it. The deployment script (`keeper/src/deploy.ts`) also targets Base Sepolia.
+The live demo runs on **Base Sepolia** (chain id 84532) and, with the same contracts and keeper, on **Base Vibenet**
+(chain id 84538453), Base's official preview testnet, whose faucet needs no captcha, so anyone can try the full flow
+from the app. The deployment script (`keeper/src/deploy.ts`) targets either; addresses are in
+[`deployments/`](deployments).
 
 ```
  Base mainnet (read only)                     Testnet                                   Bell keeper (GitHub Actions, hourly)
@@ -129,9 +132,10 @@ captcha, so anyone can try it. The deployment script (`keeper/src/deploy.ts`) al
 ### The keeper (`keeper/`)
 
 TypeScript + viem, run by [`.github/workflows/keeper.yml`](.github/workflows/keeper.yml) every hour around US market
-hours and once a day otherwise. Each cycle mirrors the registry flags, records new prints, scans the market's events
-for borrowers, liquidates positions whose health factor is below 1 on live, confirmed prices (and sells the seized
-stock back through the desk), and publishes market, price and account status to the `notes` branch for the app.
+hours and once a day otherwise, once per chain (Base Sepolia, then Base Vibenet). Each cycle mirrors the registry
+flags, records new prints, scans the market's events for borrowers, liquidates positions whose health factor is below
+1 on live, confirmed prices (and sells the seized stock back through the desk), and publishes market, price and account
+status to the `notes` branch for the app.
 
 ## Repository
 
@@ -150,7 +154,7 @@ cd contracts && forge test --fork-url https://sepolia.base.org
 
 # keeper (needs a funded testnet key in KEEPER_KEY)
 cd keeper && npm ci
-BELL_CHAIN=vibenet BELL_DRY_RUN=1 npx tsx src/keeper.ts
+BELL_CHAIN=baseSepolia BELL_DRY_RUN=1 npx tsx src/keeper.ts
 ```
 
 ## Built during the quest

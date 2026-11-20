@@ -24,6 +24,18 @@ them; a keeper liquidates positions that are really underwater. The difference i
 - Built for the [Base Stocks Maxxing](https://www.base.org/stocksmaxxing) builder quest, Programmable Stock Markets
   track (a financing tool and market infrastructure for tokenized stocks).
 
+### Try it in two minutes
+
+1. Open the app. Under **Borrowers**, press **Try to liquidate** next to the NVDA borrower, then **Run all**. Each
+   scenario is an `eth_call` to the live market with what-if state (a new print on the price mirror, the market's record
+   of prints, the oracle registry's pause flag, a later block time), so the verdicts come from the deployed contract. No
+   wallet or gas needed.
+2. To borrow yourself, open **Borrow & lend** and connect a wallet (the app adds Base Vibenet). Press
+   **Get test ETH (gas)** and **Get 10,000 tUSD** (no captcha, no sign-up), buy a test stock at its Chainlink price,
+   press **Deposit all**, then **Borrow**. Or supply test USD to the pool and earn the interest.
+
+![The unfair-liquidation tester on the live deployment](docs/tester.png)
+
 > Testnet demonstration. Test tokens mirror Coinbase tokenized stocks on Base mainnet; they have no value, are not
 > securities and are not issued by Coinbase. Nothing here is an offer to lend or borrow, or investment advice.
 > Coinbase tokenized stocks are not available to US persons, and Bell is not offered to US persons.
@@ -49,6 +61,19 @@ evidence a human risk desk would: one print is a claim, two prints are a price.
 The cost of waiting one print is bounded: borrowing power always uses the *lower* print, and the liquidation threshold
 sits 15 percentage points above the LTV, so a position opened at the maximum LTV has a buffer that covers a confirmed
 move of about 23% (megacaps) before it is underwater.
+
+## What happens in practice
+
+- **Last weekend on Base mainnet.** The Chainlink feeds for NVDA, TSLA and AAPL printed for the last time on Friday
+  2026-11-13 between 21:05 and 23:36 UTC and resumed at 01:00 UTC on Monday 11-16 (8 pm Sunday in New York): a gap of
+  49 to 52 hours. Bell treats each stock as closed once its last print is 26 hours old, and the first print after the
+  gap is exactly the single print it will not liquidate on.
+- **A down day, live.** On 2026-11-20 every stock's latest print came in 0.1% to 3.2% below the previous one. Borrowing
+  power follows the lower prints and liquidation prices stay at the higher ones (screenshot below). The NVDA demo
+  borrower's borrowing power fell to $7,899, just under its $7,900 debt: it cannot borrow more or withdraw collateral,
+  yet its health factor is 1.39, far from liquidation.
+
+![Collateral table: borrow at the lower print, liquidate at the higher one](docs/collateral.png)
 
 ## Risk parameters (live deployment)
 

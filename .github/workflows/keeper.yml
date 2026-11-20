@@ -24,9 +24,10 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     env:
-      BELL_CHAIN: ${{ vars.BELL_CHAIN || 'vibenet' }}
+      # Space-separated chains to run, e.g. "baseSepolia vibenet".
+      BELL_CHAINS: ${{ vars.BELL_CHAINS || vars.BELL_CHAIN || 'vibenet' }}
       BELL_NOTES_DIR: ${{ github.workspace }}/notes-out
       KEEPER_KEY: ${{ secrets.KEEPER_KEY }}
       BELL_DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
@@ -53,8 +54,15 @@ jobs:
       - run: npm ci
         working-directory: keeper
 
-      - name: Run one keeper cycle
-        run: npx tsx src/keeper.ts
+      - name: Run one keeper cycle per chain
+        run: |
+          status=0
+          for chain in $BELL_CHAINS; do
+            echo "::group::$chain"
+            BELL_CHAIN=$chain npx tsx src/keeper.ts || status=1
+            echo "::endgroup::"
+          done
+          exit $status
         working-directory: keeper
 
       - name: Publish status

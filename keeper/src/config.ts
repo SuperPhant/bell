@@ -40,7 +40,7 @@ export function targetChain(): Chain {
 
 /** Coinbase's onchain oracle registry on Base mainnet (multiplier + corporate-action pause flag). */
 export const MAINNET_ORACLE_REGISTRY = "0x3f3E8cf41cdd3b1D118c16471aB0113DfDDd5CaD" as const;
-export const BUILDER_CODE = process.env.BELL_BUILDER_CODE ?? "";
+export const BUILDER_CODE = process.env.BELL_BUILDER_CODE ?? "bc_vfg37ypq";
 export const NOTES_DIR = process.env.BELL_NOTES_DIR ?? join(ROOT, "notes-out");
 
 export interface LeashDeployment {

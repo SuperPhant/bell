@@ -1,6 +1,6 @@
 // Deploys Bell on a Base testnet, on top of the Leash testnet market (tUSD, B20 test stocks, mirrored Chainlink feeds,
 // oracle-priced desk), seeds lender liquidity and opens three demo borrower positions.
-import { parseUnits, maxUint256 } from "viem";
+import { parseEther, parseUnits, maxUint256 } from "viem";
 import { generatePrivateKey, privateKeyToAccount } from "viem/accounts";
 import { spawnSync } from "node:child_process";
 import { writeFileSync } from "node:fs";
@@ -101,23 +101,38 @@ const dep: BellDeployment = {
 };
 writeFileSync(bellPath(chain.id), JSON.stringify(dep, null, 2));
 
-// Demo borrowers: buy collateral through the Leash desk at the Chainlink price, deposit, borrow.
+// Demo borrowers: buy collateral through the Leash desk at the Chainlink price, deposit, borrow. The same three
+// borrower keys are used on every chain (created once, kept in the local key vault).
 const BORROWERS: Array<{ name: string; buys: Array<[string, string]>; borrow: string }> = [
   { name: "Conservative: AAPL + MSFT at 25% LTV", buys: [["AAPL", "10000"], ["MSFT", "10000"]], borrow: "5000" },
   { name: "Levered on NVDA at 40% LTV", buys: [["NVDA", "20000"]], borrow: "7900" },
   { name: "Levered on MSTR at 30% LTV", buys: [["MSTR", "20000"]], borrow: "5900" },
 ];
-for (const [i, b] of BORROWERS.entries()) {
+function borrowerKey(i: number, name: string): `0x${string}` {
+  const entry = `testnet-bell-b${i + 1}`;
+  const existing = spawnSync(VAULT_PYTHON, [VAULT, "get", entry], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
+  if (existing.status === 0 && /^(0x)?[0-9a-fA-F]{64}$/.test(existing.stdout.trim())) {
+    const k = existing.stdout.trim();
+    return (k.startsWith("0x") ? k : `0x${k}`) as `0x${string}`;
+  }
   const pk = generatePrivateKey();
-  const acct = privateKeyToAccount(pk);
   const r = spawnSync(
     VAULT_PYTHON,
-    [VAULT, "set", `testnet-bell-b${i + 1}`, acct.address, pk, "--note", `web3_hackathons lane: TESTNET-ONLY Bell demo borrower (${b.name}). Created ${new Date().toISOString().slice(0, 10)}.`],
+    [VAULT, "set", entry, privateKeyToAccount(pk).address, pk, "--note", `web3_hackathons lane: TESTNET-ONLY Bell demo borrower (${name}). Created ${new Date().toISOString().slice(0, 10)}.`],
     { stdio: ["ignore", "pipe", "pipe"] },
   );
   if (r.status !== 0) throw new Error("could not store borrower key (output suppressed)");
-  if (chain.id === 84538453) {
-    await fetch("https://api.vibes.base.org/api/vibenet/faucet/drip", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ address: acct.address }) });
+  return pk;
+}
+for (const [i, b] of BORROWERS.entries()) {
+  const pk = borrowerKey(i, b.name);
+  const acct = privateKeyToAccount(pk);
+  if ((await pub.getBalance({ address: acct.address })) === 0n) {
+    if (chain.id === 84538453) {
+      await fetch("https://api.vibes.base.org/api/vibenet/faucet/drip", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ address: acct.address }) });
+    } else {
+      await pub.waitForTransactionReceipt({ hash: await wallet.sendTransaction({ to: acct.address, value: parseEther("0.002"), account, chain }) });
+    }
   }
   for (let k = 0; k < 30 && (await pub.getBalance({ address: acct.address })) === 0n; k++) await new Promise((res) => setTimeout(res, 2000));
   const total = b.buys.reduce((a, [, x]) => a + usd(x), 0n);

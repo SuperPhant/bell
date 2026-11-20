@@ -8,3 +8,4 @@ notes-out/
 .env
 .env.*
 .DS_Store
+shots/

@@ -48,7 +48,8 @@ export function BorrowPage() {
   const [borrowUsd, setBorrowUsd] = useState("1000");
   const [repayUsd, setRepayUsd] = useState("");
   const [supplyUsd, setSupplyUsd] = useState("1000");
-  const w = useAsync(async () => (address ? loadWallet(address) : null), [address, status], 30_000);
+  // Reloaded explicitly after each action (not keyed on the status text) so balances stay on screen while refreshing.
+  const w = useAsync(async () => (address ? loadWallet(address) : null), [address], 30_000);
   const buyStock = STOCKS.find((s) => s.ticker === buyTicker)!;
   const quote = useAsync(
     async () => (usd6(buyUsd) > 0n ? ((await testnet.readContract({ address: LEASH.desk, abi: ABI.desk, functionName: "quote", args: [buyStock.token, true, usd6(buyUsd)] })) as bigint) : 0n),
@@ -67,6 +68,7 @@ export function BorrowPage() {
       setStatus(`${label}: ${errorText(e)}`);
     } finally {
       setBusy(false);
+      w.reload();
     }
   };
 

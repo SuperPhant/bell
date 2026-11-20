@@ -19,6 +19,7 @@ them; a keeper liquidates positions that are really underwater. The difference i
 | **Close factor 50%, tiered risk.** At most half the debt per liquidation; bigger haircuts and bonuses for more volatile names. | Wiping a borrower out in one step; one-size-fits-all risk. |
 
 - **App:** https://superphant.github.io/bell/
+- **Demo video (2 min):** [bell_demo.mp4](https://github.com/SuperPhant/bell/releases/download/demo-v1/bell_demo.mp4)
 - **Keeper runs and market status:** [`notes` branch](https://github.com/SuperPhant/bell/tree/notes)
 - **Contracts and addresses:** [`deployments/`](deployments)
 - Built for the [Base Stocks Maxxing](https://www.base.org/stocksmaxxing) builder quest, Programmable Stock Markets
@@ -155,7 +156,7 @@ BELL_CHAIN=vibenet BELL_DRY_RUN=1 npx tsx src/keeper.ts
 ## Built during the quest
 
 Everything in this repository was written during the Stocks Maxxing season (November 2026); nothing pre-existed.
-Development used AI coding assistants.
+Development used AI coding assistants, and the demo video's narration is synthetic (text-to-speech).
 
 ## License
 

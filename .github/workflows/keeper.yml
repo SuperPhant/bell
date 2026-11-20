@@ -1,0 +1,68 @@
+name: keeper
+
+# The Bell keeper: mirrors Coinbase's mainnet corporate-action flags onto the testnet oracle registry, records every
+# new price print in the market (pokeAll), and liquidates positions that are unhealthy on confirmed, live prices.
+# Its status is published to the `notes` branch, which the app reads.
+on:
+  schedule:
+    - cron: "53 13-22 * * 1-5" # hourly around US market hours, weekdays (testnet prints are relayed every 2 hours)
+    - cron: "17 4 * * *" # daily off-hours run: corporate-action flags + status
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Simulate transactions without sending them
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bell-keeper
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BELL_CHAIN: ${{ vars.BELL_CHAIN || 'vibenet' }}
+      BELL_NOTES_DIR: ${{ github.workspace }}/notes-out
+      KEEPER_KEY: ${{ secrets.KEEPER_KEY }}
+      BELL_DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check out the notes branch
+        run: |
+          if git fetch origin notes:notes; then
+            git worktree add notes-out notes
+          else
+            git worktree add --detach notes-out
+            cd notes-out
+            git checkout --orphan notes
+            git rm -rf --quiet . || true
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: keeper/package-lock.json
+
+      - run: npm ci
+        working-directory: keeper
+
+      - name: Run one keeper cycle
+        run: npx tsx src/keeper.ts
+        working-directory: keeper
+
+      - name: Publish status
+        if: always()
+        working-directory: notes-out
+        run: |
+          git config user.name "bell-keeper[bot]"
+          git config user.email "bell-keeper[bot]@users.noreply.github.com"
+          git add -A
+          git commit --quiet -m "keeper run $(date -u +%Y-%m-%dT%H:%M:%SZ)" || exit 0
+          git push origin HEAD:notes

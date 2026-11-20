@@ -1,0 +1,26 @@
+{
+  "name": "bell-keeper",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Bell keeper: mirrors Coinbase oracle-registry pause flags, records feed prints and liquidates unhealthy Bell positions on the testnet.",
+  "license": "MIT",
+  "scripts": {
+    "abi": "tsx src/exportAbi.ts",
+    "deploy": "tsx src/deploy.ts",
+    "keeper": "tsx src/keeper.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "ox": "^1.8.16",
+    "tsx": "^4.23.15",
+    "viem": "^2.57.19"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,10 @@
+node_modules/
+contracts/out/
+contracts/cache/
+contracts/broadcast/
+app/dist/
+notes-out/
+*.log
+.env
+.env.*
+.DS_Store

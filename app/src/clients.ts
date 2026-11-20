@@ -1,4 +1,5 @@
 import { createPublicClient, createWalletClient, custom, http, type Abi, type WalletClient } from "viem";
+import { patientRpc } from "./rpc";
 import { CHAIN, DEP, MAINNET, MAINNET_RPC } from "./config";
 import BellMarket from "./abi/BellMarket.json";
 import LeashDesk from "./abi/LeashDesk.json";
@@ -17,41 +18,6 @@ export const ABI = {
   b20: IB20.abi as Abi,
   feed: Aggregator.abi as Abi,
 };
-
-// The public Vibenet RPC rate-limits by request count (JSON-RPC error -32016 inside an HTTP 200, which viem does not
-// retry), so reads are folded into Multicall3 calls and rate-limited requests are retried with backoff.
-let rpcId = 0;
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-const patientRpc = (url: string) =>
-  custom({
-    async request({ method, params }) {
-      for (let attempt = 0; ; attempt++) {
-        let j: any;
-        try {
-          const res = await fetch(url, {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify({ jsonrpc: "2.0", id: ++rpcId, method, params }),
-          });
-          j = await res.json();
-        } catch (e) {
-          if (attempt < 4) {
-            await sleep(500 * (attempt + 1));
-            continue;
-          }
-          throw e;
-        }
-        if (j.error) {
-          if (j.error.code === -32016 && attempt < 8) {
-            await sleep(700 * (attempt + 1));
-            continue;
-          }
-          throw Object.assign(new Error(j.error.message), { code: j.error.code, data: j.error.data });
-        }
-        return j.result;
-      }
-    },
-  });
 
 export const testnet = createPublicClient({
   chain: CHAIN,

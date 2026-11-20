@@ -4,10 +4,10 @@
 //   3. discover borrowers from events, read their health
 //   4. liquidate positions that are unhealthy on confirmed, live prices; sell the seized stock back through the desk
 //   5. publish market, prices, accounts and liquidations to the notes branch for the app
-import { encodeEventTopics, parseAbiItem, maxUint256 } from "viem";
+import { createPublicClient, http, parseAbiItem, maxUint256 } from "viem";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { MAINNET_ORACLE_REGISTRY, NOTES_DIR, abi, bellDeployment, clients, loadKey, mainnet, targetChain } from "./config.js";
+import { LOGS_RPC, MAINNET_ORACLE_REGISTRY, NOTES_DIR, abi, bellDeployment, clients, loadKey, mainnet, targetChain } from "./config.js";
 
 const chain = targetChain();
 const dep = bellDeployment(chain.id);
@@ -46,6 +46,13 @@ const index: {
   ? JSON.parse(readFileSync(indexFile, "utf8"))
   : { lastScanned: String(BigInt(dep.startBlock) - 1n), accounts: [], liquidations: [], health: {} };
 
+// 0. The liquidation float is approved once, so liquidations (and what-if simulations as the keeper) can repay debt.
+const marketAllowance = (await pub.readContract({ address: dep.leash.usd, abi: b20, functionName: "allowance", args: [account.address, dep.market] })) as bigint;
+if (marketAllowance < maxUint256 / 2n) {
+  const tx = await send(dep.leash.usd, b20, "approve", [dep.market, maxUint256]);
+  say(`approved the market to pull the keeper's liquidation float (${tx})`);
+}
+
 // 1. registry flags
 const m = mainnet();
 const mainParams = (await Promise.all(
@@ -67,8 +74,10 @@ if (fresh.length) {
   say(`prints: new rounds for ${fresh.map((c) => c.ticker).join(", ")} recorded (${tx})`);
 }
 
-// 3. discover borrowers
+// 3. discover borrowers. The public Base Sepolia RPC caps eth_getLogs at 200 blocks (40 s of 200 ms blocks), so log
+// scans use a provider with a larger range.
 const latest = await pub.getBlockNumber();
+const logsClient = createPublicClient({ chain, transport: http(process.env.BELL_LOGS_RPC ?? LOGS_RPC[chain.id] ?? chain.rpcUrls.default.http[0], { retryCount: 4 }) });
 const events = [
   parseAbiItem("event CollateralDeposited(address indexed account, address indexed token, uint256 amount)"),
   parseAbiItem("event Borrowed(address indexed account, uint256 amount, uint256 debtAfter)"),
@@ -78,20 +87,17 @@ const known = new Set(index.accounts.map((a) => a.toLowerCase()));
 const CHUNK = BigInt(process.env.BELL_LOG_CHUNK ?? 9000);
 while (from <= latest) {
   const to = from + CHUNK - 1n > latest ? latest : from + CHUNK - 1n;
-  for (const ev of events) {
-    const logs = await pub.getLogs({ address: dep.market, event: ev, fromBlock: from, toBlock: to });
-    for (const l of logs) {
-      const a = (l as any).args.account as string;
-      if (a && !known.has(a.toLowerCase())) {
-        known.add(a.toLowerCase());
-        index.accounts.push(a);
-      }
+  const logs = await logsClient.getLogs({ address: dep.market, events, fromBlock: from, toBlock: to });
+  for (const l of logs) {
+    const a = (l as any).args.account as string;
+    if (a && !known.has(a.toLowerCase())) {
+      known.add(a.toLowerCase());
+      index.accounts.push(a);
     }
   }
   index.lastScanned = to.toString();
   from = to + 1n;
 }
-void encodeEventTopics;
 
 // 4. health and liquidations
 const tickerOf = new Map(dep.collaterals.map((c) => [c.token.toLowerCase(), c.ticker]));

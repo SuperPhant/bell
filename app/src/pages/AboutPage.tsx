@@ -1,4 +1,4 @@
-import { COINBASE_REGISTRY, DEP, LEASH, LEASH_REPO, REPO, STOCKS } from "../config";
+import { CHAIN, COINBASE_REGISTRY, DEP, LEASH, LEASH_REPO, REPO, STOCKS } from "../config";
 import { AddrLink, Card } from "../ui";
 
 export function AboutPage() {
@@ -126,9 +126,11 @@ export function AboutPage() {
 
       <Card title="Testnet">
         <p className="small">
-          The demo runs on Base Vibenet (chain id {DEP.chainId}), Base's preview testnet, whose faucet needs no captcha, so
-          anyone can try the full flow. Test tokens have no value, are not securities and are not issued by Coinbase. Nothing
-          here is an offer to lend or borrow. Coinbase tokenized stocks are not available to US persons, and neither is Bell.
+          Bell runs on two Base testnets with the same contracts: Base Sepolia (chain id 84532), and Base Vibenet (chain id
+          84538453), Base's preview testnet, where test gas is one click from the app with no captcha. You are looking at{" "}
+          {CHAIN.name}; switch with the network menu at the top. Test tokens have no value, are not securities and are not
+          issued by Coinbase. Nothing here is an offer to lend or borrow. Coinbase tokenized stocks are not available to US
+          persons, and neither is Bell.
         </p>
         <p className="small">
           Source, tests and deployment scripts: <a href={REPO}>{REPO.replace("https://", "")}</a> (MIT).

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { formatUnits, parseUnits } from "viem";
 import { useWallet } from "../App";
 import { ABI, testnet } from "../clients";
-import { DEP, LEASH, STOCKS, STOCK_NAMES } from "../config";
+import { BASE_SEPOLIA_FAUCETS, CHAIN, DEP, LEASH, STOCKS, STOCK_NAMES, VIBENET_ID, onChain } from "../config";
 import { loadPosition } from "../data";
 import { ensureAllowance, errorText, send, type Signer } from "../tx";
 import { Card, Spinner, Stat } from "../ui";
@@ -144,8 +144,8 @@ export function BorrowPage() {
     <div className="page narrow">
       <h1>Borrow &amp; lend</h1>
       <p className="lead">
-        Everything runs on Base Vibenet with test tokens: get free test ETH for gas and test USD, buy a test stock at its
-        Chainlink price, post it as collateral and borrow against it. Or lend test USD to the pool.
+        Everything runs on {CHAIN.name} with test tokens: get test USD from the app, buy a test stock at its Chainlink price,
+        post it as collateral and borrow against it. Or lend test USD to the pool.
       </p>
 
       <Card title="Your wallet">
@@ -163,10 +163,26 @@ export function BorrowPage() {
               <Stat label="Debt" value={fmtUsd(p!.debt, 2)} />
               <Stat label="Health" value={<HealthBadge hf={p!.healthFactor} />} />
             </div>
+            {CHAIN.id !== VIBENET_ID && d.eth === 0n && (
+              <p className="note small">
+                You need a little {CHAIN.name} ETH for gas:{" "}
+                {BASE_SEPOLIA_FAUCETS.map(([n, u], i) => (
+                  <span key={u}>
+                    {i ? " · " : ""}
+                    <a href={u} target="_blank" rel="noreferrer">
+                      {n}
+                    </a>
+                  </span>
+                ))}
+                . No captcha wanted? <a href={onChain(VIBENET_ID, "#/borrow")}>Use Bell on Base Vibenet</a>, where test gas is one click.
+              </p>
+            )}
             <div className="row gap wrap">
-              <button className="btn small ghost" onClick={dripGas} disabled={busy}>
-                Get test ETH (gas)
-              </button>
+              {CHAIN.id === VIBENET_ID && (
+                <button className="btn small ghost" onClick={dripGas} disabled={busy}>
+                  Get test ETH (gas)
+                </button>
+              )}
               <button className="btn small ghost" onClick={claim} disabled={busy || d.nextClaim > now} title={d.nextClaim > now ? "The faucet has a cooldown" : undefined}>
                 Get 10,000 tUSD
               </button>

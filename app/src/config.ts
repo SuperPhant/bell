@@ -52,17 +52,29 @@ export const vibenet = defineChain({
 });
 
 const files = import.meta.glob("../../deployments/*.json", { eager: true, import: "default" }) as Record<string, unknown>;
-const bellFiles = Object.entries(files)
+/** Every chain Bell is deployed on, Base Sepolia first. */
+export const DEPLOYMENTS = Object.entries(files)
   .filter(([path]) => /\/\d+\.json$/.test(path))
-  .map(([, d]) => d as Deployment);
+  .map(([, d]) => d as Deployment)
+  .sort((a, b) => (a.chainId === 84532 ? -1 : b.chainId === 84532 ? 1 : 0));
 const leashFiles = Object.entries(files)
   .filter(([path]) => /\/leash-\d+\.json$/.test(path))
   .map(([, d]) => d as LeashData);
 
 function pick(): Deployment {
   const wanted = Number(new URLSearchParams(location.search).get("chain") ?? import.meta.env.VITE_CHAIN_ID ?? 84532);
-  return bellFiles.find((d) => d.chainId === wanted) ?? bellFiles.find((d) => d.chainId === 84532) ?? bellFiles[0];
+  return DEPLOYMENTS.find((d) => d.chainId === wanted) ?? DEPLOYMENTS[0];
 }
+
+export const VIBENET_ID = 84538453;
+/** Base Sepolia gas comes from captcha faucets; Vibenet's faucet is one click from the app. */
+export const BASE_SEPOLIA_FAUCETS: Array<[string, string]> = [
+  ["Coinbase Developer Platform faucet", "https://portal.cdp.coinbase.com/products/faucet"],
+  ["Superchain faucet", "https://console.optimism.io/faucet"],
+  ["thirdweb faucet", "https://thirdweb.com/base-sepolia-testnet"],
+];
+/** Link to the same page of this app on another chain. */
+export const onChain = (chainId: number, hash = "#/") => `${location.pathname}?chain=${chainId}${hash}`;
 
 export const DEP: Deployment = pick();
 export const LEASH: LeashData = DEP?.leash ?? leashFiles.find((l) => l.chainId === DEP?.chainId)!;

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import type { WalletClient } from "viem";
 import { connectWallet, injected } from "./clients";
-import { CHAIN, DEP, REPO } from "./config";
+import { CHAIN, DEP, DEPLOYMENTS, REPO, VIBENET_ID, onChain } from "./config";
 import { short } from "./util";
 import { MarketPage } from "./pages/MarketPage";
 import { AccountPage } from "./pages/AccountPage";
@@ -60,6 +60,25 @@ export function BellLogo({ size = 28 }: { size?: number }) {
   );
 }
 
+function NetworkSwitch() {
+  if (DEPLOYMENTS.length < 2) return <span className="chip net">{CHAIN.name}</span>;
+  return (
+    <select
+      className="chip net"
+      aria-label="Testnet"
+      title="Bell runs on two Base testnets. On Vibenet, test gas is one click (no captcha)."
+      value={CHAIN.id}
+      onChange={(e) => location.assign(onChain(Number(e.target.value)))}
+    >
+      {DEPLOYMENTS.map((d) => (
+        <option key={d.chainId} value={d.chainId}>
+          {d.chainId === VIBENET_ID ? "Base Vibenet · one-click gas" : d.chainName}
+        </option>
+      ))}
+    </select>
+  );
+}
+
 function Header() {
   const { address, connect, error } = useWallet();
   return (
@@ -79,7 +98,7 @@ function Header() {
         </a>
       </nav>
       <div className="wallet">
-        <span className="chip net">{CHAIN.name}</span>
+        <NetworkSwitch />
         {address ? (
           <a className="chip addr" href={`#/account/${address}`}>
             {short(address)}

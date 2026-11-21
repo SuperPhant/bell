@@ -132,7 +132,8 @@ from the app. The deployment script (`keeper/src/deploy.ts`) targets either; add
 ### The keeper (`keeper/`)
 
 TypeScript + viem, run by [`.github/workflows/keeper.yml`](.github/workflows/keeper.yml) every hour around US market
-hours and once a day otherwise, once per chain (Base Sepolia, then Base Vibenet). Each cycle mirrors the registry
+hours and once a day otherwise ([`tick.yml`](.github/workflows/tick.yml) starts it on that schedule, because GitHub's
+own cron trigger ran hours late here), once per chain (Base Sepolia, then Base Vibenet). Each cycle mirrors the registry
 flags, records new prints, scans the market's events for borrowers, liquidates positions whose health factor is below
 1 on live, confirmed prices (and sells the seized stock back through the desk), and publishes market, price and account
 status to the `notes` branch for the app.

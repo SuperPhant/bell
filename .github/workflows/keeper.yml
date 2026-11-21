@@ -3,10 +3,9 @@ name: keeper
 # The Bell keeper: mirrors Coinbase's mainnet corporate-action flags onto the testnet oracle registry, records every
 # new price print in the market (pokeAll), and liquidates positions that are unhealthy on confirmed, live prices.
 # Its status is published to the `notes` branch, which the app reads.
+# Runs hourly at :53 UTC around US market hours on weekdays (testnet prints are relayed every 2 hours), plus a daily
+# off-hours run at 04:17 UTC for corporate-action flags and status; tick.yml dispatches it on that schedule.
 on:
-  schedule:
-    - cron: "53 13-22 * * 1-5" # hourly around US market hours, weekdays (testnet prints are relayed every 2 hours)
-    - cron: "17 4 * * *" # daily off-hours run: corporate-action flags + status
   workflow_dispatch:
     inputs:
       dry_run:

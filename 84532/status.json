@@ -1,10 +1,10 @@
 {
  "latest": {
-  "at": "2026-11-20T21:18:02.847Z",
+  "at": "2026-11-21T03:34:27.650Z",
   "keeper": "0x34F6607BE52Fb011C4610aCbEB967dD287d28196",
   "market": {
-   "totalAssets": 300000.018866,
-   "totalDebt": 18800.018866,
+   "totalAssets": 300000.456713,
+   "totalDebt": 18800.456713,
    "utilization": 0.0626,
    "borrowApr": 0.03252
   },
@@ -114,9 +114,9 @@
    {
     "account": "0xEF01340206CE5c852c2526827781aC946497F16c",
     "name": "Conservative: AAPL + MSFT at 25% LTV",
-    "debt": 5000.005069,
+    "debt": 5000.121518,
     "borrowPower": 9989.999994,
-    "healthFactor": 2.6114704348912734,
+    "healthFactor": 2.6114096157452624,
     "collateral": [
      {
       "ticker": "AAPL",
@@ -137,9 +137,9 @@
    {
     "account": "0x2C7e37B7ef7800A8B27cE53A3c3F0df36918d39f",
     "name": "Levered on NVDA at 40% LTV",
-    "debt": 7900.007939,
+    "debt": 7900.191928,
     "borrowPower": 7991.999999,
-    "healthFactor": 1.4051118402300127,
+    "healthFactor": 1.4050791163259952,
     "collateral": [
      {
       "ticker": "NVDA",
@@ -153,9 +153,9 @@
    {
     "account": "0x625863EA8B9A28637C6bA39a903aFEAd012d33e1",
     "name": "Levered on MSTR at 30% LTV",
-    "debt": 5900.00586,
+    "debt": 5900.14327,
     "borrowPower": 5993.999999,
-    "healthFactor": 1.535704780808472,
+    "healthFactor": 1.5356690153729098,
     "collateral": [
      {
       "ticker": "MSTR",
@@ -167,11 +167,19 @@
     ]
    }
   ],
-  "log": [
-   "approved the market to pull the keeper's liquidation float (0xe1d7d3e7890df382df9a47267f42b0eee514d898e055b2feebda59cc4d0fba3c)"
-  ]
+  "log": []
  },
  "history": [
+  {
+   "at": "2026-11-21T03:34:27.650Z",
+   "log": [],
+   "market": {
+    "totalAssets": 300000.456713,
+    "totalDebt": 18800.456713,
+    "utilization": 0.0626,
+    "borrowApr": 0.03252
+   }
+  },
   {
    "at": "2026-11-20T21:18:02.847Z",
    "log": [

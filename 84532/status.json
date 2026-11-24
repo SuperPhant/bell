@@ -1,40 +1,40 @@
 {
  "latest": {
-  "at": "2026-11-24T22:17:03.678Z",
+  "at": "2026-11-24T23:17:29.907Z",
   "keeper": "0x34F6607BE52Fb011C4610aCbEB967dD287d28196",
   "market": {
-   "totalAssets": 300009.745241,
-   "totalDebt": 24541.027689,
+   "totalAssets": 300009.847809,
+   "totalDebt": 24541.130257,
    "utilization": 0.0818,
    "borrowApr": 0.03636
   },
   "prices": [
    {
     "ticker": "AAPL",
-    "latest": 352.63136471,
-    "low": 350.84497125,
-    "high": 352.63136471,
-    "updatedAt": 1795540862,
+    "latest": 354.50230043,
+    "low": 352.63136471,
+    "high": 354.50230043,
+    "updatedAt": 1795554098,
     "confirmed": true,
     "stale": false,
     "paused": false
    },
    {
     "ticker": "AMZN",
-    "latest": 252.1075,
+    "latest": 252.3855,
     "low": 252.1075,
-    "high": 253.3805,
-    "updatedAt": 1795545950,
+    "high": 252.3855,
+    "updatedAt": 1795553484,
     "confirmed": true,
     "stale": false,
     "paused": false
    },
    {
     "ticker": "GOOGL",
-    "latest": 277.37956558,
+    "latest": 278.92357263,
     "low": 277.37956558,
-    "high": 278.80510297,
-    "updatedAt": 1795549940,
+    "high": 278.92357263,
+    "updatedAt": 1795553482,
     "confirmed": true,
     "stale": false,
     "paused": false
@@ -51,60 +51,60 @@
    },
    {
     "ticker": "MSFT",
-    "latest": 494.91999999,
+    "latest": 498.16999999,
     "low": 494.91999999,
-    "high": 500.3445,
-    "updatedAt": 1795546536,
+    "high": 498.16999999,
+    "updatedAt": 1795558693,
     "confirmed": true,
     "stale": false,
     "paused": false
    },
    {
     "ticker": "MSTR",
-    "latest": 78.4213,
-    "low": 78.4213,
-    "high": 79.275,
-    "updatedAt": 1795549140,
+    "latest": 77.87,
+    "low": 77.87,
+    "high": 78.4213,
+    "updatedAt": 1795555924,
     "confirmed": true,
     "stale": false,
     "paused": false
    },
    {
     "ticker": "NVDA",
-    "latest": 152.79565063,
+    "latest": 153.59758179,
     "low": 152.79565063,
-    "high": 152.84117511,
-    "updatedAt": 1795548808,
+    "high": 153.59758179,
+    "updatedAt": 1795556702,
     "confirmed": true,
     "stale": false,
     "paused": false
    },
    {
     "ticker": "SNDK",
-    "latest": 615.31199992,
+    "latest": 621.8,
     "low": 615.31199992,
-    "high": 619.85999992,
-    "updatedAt": 1795550122,
+    "high": 621.8,
+    "updatedAt": 1795558016,
     "confirmed": true,
     "stale": false,
     "paused": false
    },
    {
     "ticker": "SPCX",
-    "latest": 126,
+    "latest": 126.655,
     "low": 126,
-    "high": 126.74,
-    "updatedAt": 1795550130,
+    "high": 126.655,
+    "updatedAt": 1795558475,
     "confirmed": true,
     "stale": false,
     "paused": false
    },
    {
     "ticker": "TSLA",
-    "latest": 380.85,
+    "latest": 385.26375,
     "low": 380.85,
-    "high": 384.6255,
-    "updatedAt": 1795550539,
+    "high": 385.26375,
+    "updatedAt": 1795553480,
     "confirmed": true,
     "stale": false,
     "paused": false
@@ -114,22 +114,22 @@
    {
     "account": "0xEF01340206CE5c852c2526827781aC946497F16c",
     "name": "Conservative: AAPL + MSFT at 25% LTV",
-    "debt": 5002.006213,
-    "borrowPower": 10258.588423,
-    "healthFactor": 2.687563093996501,
+    "debt": 5002.027112,
+    "borrowPower": 10284.701205,
+    "healthFactor": 2.6888016659754563,
     "collateral": [
      {
       "ticker": "AAPL",
       "balance": 29.23519643,
-      "valueLow": 10257.02165,
-      "valueHigh": 10309.247214,
+      "valueLow": 10309.247214,
+      "valueHigh": 10363.944387,
       "live": true
      },
      {
       "ticker": "MSFT",
       "balance": 20.73093671,
       "valueLow": 10260.155196,
-      "valueHigh": 10372.610162,
+      "valueHigh": 10327.53074,
       "live": true
      }
     ]
@@ -137,15 +137,15 @@
    {
     "account": "0x2C7e37B7ef7800A8B27cE53A3c3F0df36918d39f",
     "name": "Levered on NVDA at 40% LTV",
-    "debt": 7903.169746,
+    "debt": 7903.202767,
     "borrowPower": 9721.814322,
-    "healthFactor": 1.6919132299755617,
+    "healthFactor": 1.7002793568841759,
     "collateral": [
      {
       "ticker": "NVDA",
       "balance": 159.06562593,
       "valueLow": 24304.535806,
-      "valueHigh": 24311.777186,
+      "valueHigh": 24432.095488,
       "live": true
      }
     ]
@@ -153,52 +153,66 @@
    {
     "account": "0x625863EA8B9A28637C6bA39a903aFEAd012d33e1",
     "name": "Levered on MSTR at 30% LTV",
-    "debt": 5902.36721,
-    "borrowPower": 6043.242128,
-    "healthFactor": 1.5525201377635058,
+    "debt": 5902.391871,
+    "borrowPower": 6000.758269,
+    "healthFactor": 1.5357948760633888,
     "collateral": [
      {
       "ticker": "MSTR",
       "balance": 256.87077908,
-      "valueLow": 20144.140427,
-      "valueHigh": 20363.431011,
+      "valueLow": 20002.527566,
+      "valueHigh": 20144.140427,
       "live": true
      }
     ]
    },
    {
     "account": "0x68E3AF39a68265DC28961350f43c3ebA964CE425",
-    "debt": 5733.484524,
-    "borrowPower": 6903.11381,
-    "healthFactor": 1.6977130244713992,
+    "debt": 5733.50848,
+    "borrowPower": 6893.19041,
+    "healthFactor": 1.697812636530713,
     "collateral": [
      {
       "ticker": "MSTR",
       "balance": 60,
-      "valueLow": 4705.278,
-      "valueHigh": 4756.5,
+      "valueLow": 4672.2,
+      "valueHigh": 4705.278,
       "live": true
      },
      {
       "ticker": "NVDA",
       "balance": 40,
       "valueLow": 6111.826025,
-      "valueHigh": 6113.647004,
+      "valueHigh": 6143.903271,
       "live": true
      },
      {
       "ticker": "TSLA",
       "balance": 20,
       "valueLow": 7617,
-      "valueHigh": 7692.51,
+      "valueHigh": 7705.275,
       "live": true
      }
     ]
    }
   ],
-  "log": []
+  "log": [
+   "prints: new rounds for AAPL, AMZN, GOOGL, MSFT, MSTR, NVDA, SNDK, SPCX, TSLA recorded (0xd0837feb4feaeb6e302684c45ec9e8ad791885e5461766175831fdab5b0d5778)"
+  ]
  },
  "history": [
+  {
+   "at": "2026-11-24T23:17:29.907Z",
+   "log": [
+    "prints: new rounds for AAPL, AMZN, GOOGL, MSFT, MSTR, NVDA, SNDK, SPCX, TSLA recorded (0xd0837feb4feaeb6e302684c45ec9e8ad791885e5461766175831fdab5b0d5778)"
+   ],
+   "market": {
+    "totalAssets": 300009.847809,
+    "totalDebt": 24541.130257,
+    "utilization": 0.0818,
+    "borrowApr": 0.03636
+   }
+  },
   {
    "at": "2026-11-24T22:17:03.678Z",
    "log": [],

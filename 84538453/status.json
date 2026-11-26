@@ -1,10 +1,10 @@
 {
  "latest": {
-  "at": "2026-11-26T16:26:21.325Z",
+  "at": "2026-11-26T17:26:24.566Z",
   "keeper": "0x34F6607BE52Fb011C4610aCbEB967dD287d28196",
   "market": {
-   "totalAssets": 300511.121187,
-   "totalDebt": 20311.121187,
+   "totalAssets": 300511.198884,
+   "totalDebt": 20311.198884,
    "utilization": 0.0675,
    "borrowApr": 0.0335
   },
@@ -114,9 +114,9 @@
    {
     "account": "0xEF01340206CE5c852c2526827781aC946497F16c",
     "name": "Conservative: AAPL + MSFT at 25% LTV",
-    "debt": 5002.740583,
+    "debt": 5002.759725,
     "borrowPower": 9998.660542,
-    "healthFactor": 2.6048359211913183,
+    "healthFactor": 2.6048259543386325,
     "collateral": [
      {
       "ticker": "AAPL",
@@ -137,9 +137,9 @@
    {
     "account": "0x2C7e37B7ef7800A8B27cE53A3c3F0df36918d39f",
     "name": "Levered on NVDA at 40% LTV",
-    "debt": 7904.330015,
+    "debt": 7904.36026,
     "borrowPower": 8704.61815,
-    "healthFactor": 1.5387408963085911,
+    "healthFactor": 1.5387350085179443,
     "collateral": [
      {
       "ticker": "NVDA",
@@ -153,9 +153,9 @@
    {
     "account": "0x625863EA8B9A28637C6bA39a903aFEAd012d33e1",
     "name": "Levered on MSTR at 30% LTV",
-    "debt": 5903.23373,
+    "debt": 5903.256311,
     "borrowPower": 5959.665851,
-    "healthFactor": 1.5486703503776056,
+    "healthFactor": 1.5486644264394707,
     "collateral": [
      {
       "ticker": "MSTR",
@@ -168,9 +168,9 @@
    },
    {
     "account": "0xA01d92d0194e26DB71E917c6d082885aFa825F1d",
-    "debt": 1500.816849,
+    "debt": 1500.82259,
     "borrowPower": 2201.665303,
-    "healthFactor": 2.0497667214022592,
+    "healthFactor": 2.049758880561626,
     "collateral": [
      {
       "ticker": "NVDA",
@@ -185,6 +185,16 @@
   "log": []
  },
  "history": [
+  {
+   "at": "2026-11-26T17:26:24.566Z",
+   "log": [],
+   "market": {
+    "totalAssets": 300511.198884,
+    "totalDebt": 20311.198884,
+    "utilization": 0.0675,
+    "borrowApr": 0.0335
+   }
+  },
   {
    "at": "2026-11-26T16:26:21.325Z",
    "log": [],

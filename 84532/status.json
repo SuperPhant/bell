@@ -1,10 +1,10 @@
 {
  "latest": {
-  "at": "2026-11-26T16:26:18.951Z",
+  "at": "2026-11-26T17:26:22.270Z",
   "keeper": "0x34F6607BE52Fb011C4610aCbEB967dD287d28196",
   "market": {
-   "totalAssets": 300013.992103,
-   "totalDebt": 24229.889878,
+   "totalAssets": 300014.092139,
+   "totalDebt": 24229.989914,
    "utilization": 0.0807,
    "borrowApr": 0.03614
   },
@@ -114,9 +114,9 @@
    {
     "account": "0xEF01340206CE5c852c2526827781aC946497F16c",
     "name": "Conservative: AAPL + MSFT at 25% LTV",
-    "debt": 5002.878208,
+    "debt": 5002.898868,
     "borrowPower": 10252.041485,
-    "healthFactor": 2.6707946402999863,
+    "healthFactor": 2.6707836109710463,
     "collateral": [
      {
       "ticker": "AAPL",
@@ -137,9 +137,9 @@
    {
     "account": "0x2C7e37B7ef7800A8B27cE53A3c3F0df36918d39f",
     "name": "Levered on NVDA at 40% LTV",
-    "debt": 7904.547498,
+    "debt": 7904.580142,
     "borrowPower": 9487.639256,
-    "healthFactor": 1.6771116904989467,
+    "healthFactor": 1.677104764434179,
     "collateral": [
      {
       "ticker": "NVDA",
@@ -153,9 +153,9 @@
    {
     "account": "0x625863EA8B9A28637C6bA39a903aFEAd012d33e1",
     "name": "Levered on MSTR at 30% LTV",
-    "debt": 5903.396164,
+    "debt": 5903.420543,
     "borrowPower": 6186.475843,
-    "healthFactor": 1.6075646404814108,
+    "healthFactor": 1.6075580018186075,
     "collateral": [
      {
       "ticker": "MSTR",
@@ -168,9 +168,9 @@
    },
    {
     "account": "0x68E3AF39a68265DC28961350f43c3ebA964CE425",
-    "debt": 5419.067984,
+    "debt": 5419.090363,
     "borrowPower": 6870.082748,
-    "healthFactor": 1.7992845590401436,
+    "healthFactor": 1.799277128606907,
     "collateral": [
      {
       "ticker": "MSTR",
@@ -199,6 +199,16 @@
   "log": []
  },
  "history": [
+  {
+   "at": "2026-11-26T17:26:22.270Z",
+   "log": [],
+   "market": {
+    "totalAssets": 300014.092139,
+    "totalDebt": 24229.989914,
+    "utilization": 0.0807,
+    "borrowApr": 0.03614
+   }
+  },
   {
    "at": "2026-11-26T16:26:18.951Z",
    "log": [],

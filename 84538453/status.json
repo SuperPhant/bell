@@ -1,10 +1,10 @@
 {
  "latest": {
-  "at": "2026-11-26T22:27:22.326Z",
+  "at": "2026-11-26T23:27:43.046Z",
   "keeper": "0x34F6607BE52Fb011C4610aCbEB967dD287d28196",
   "market": {
-   "totalAssets": 300511.588293,
-   "totalDebt": 20311.588293,
+   "totalAssets": 300511.666377,
+   "totalDebt": 20311.666377,
    "utilization": 0.0675,
    "borrowApr": 0.0335
   },
@@ -16,7 +16,7 @@
     "high": 355.08759315,
     "updatedAt": 1795640924,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    },
    {
@@ -114,16 +114,16 @@
    {
     "account": "0xEF01340206CE5c852c2526827781aC946497F16c",
     "name": "Conservative: AAPL + MSFT at 25% LTV",
-    "debt": 5002.855633,
-    "borrowPower": 5078.067348,
-    "healthFactor": 2.6047760181290047,
+    "debt": 5002.874866,
+    "borrowPower": 0,
+    "healthFactor": 2.6047660043552248,
     "collateral": [
      {
       "ticker": "AAPL",
       "balance": 28.60209525,
       "valueLow": 10156.134696,
       "valueHigh": 10156.249161,
-      "live": true
+      "live": false
      },
      {
       "ticker": "MSFT",
@@ -137,9 +137,9 @@
    {
     "account": "0x2C7e37B7ef7800A8B27cE53A3c3F0df36918d39f",
     "name": "Levered on NVDA at 40% LTV",
-    "debt": 7904.511804,
+    "debt": 7904.542183,
     "borrowPower": 8704.61815,
-    "healthFactor": 1.5387055081434857,
+    "healthFactor": 1.538699594539187,
     "collateral": [
      {
       "ticker": "NVDA",
@@ -153,9 +153,9 @@
    {
     "account": "0x625863EA8B9A28637C6bA39a903aFEAd012d33e1",
     "name": "Levered on MSTR at 30% LTV",
-    "debt": 5903.369489,
+    "debt": 5903.392178,
     "borrowPower": 5959.665851,
-    "healthFactor": 1.5486347358123156,
+    "healthFactor": 1.5486287838151482,
     "collateral": [
      {
       "ticker": "MSTR",
@@ -168,9 +168,9 @@
    },
    {
     "account": "0xA01d92d0194e26DB71E917c6d082885aFa825F1d",
-    "debt": 1500.851364,
+    "debt": 1500.857132,
     "borrowPower": 2201.665303,
-    "healthFactor": 2.0497195830246118,
+    "healthFactor": 2.0497117056708634,
     "collateral": [
      {
       "ticker": "NVDA",
@@ -185,6 +185,16 @@
   "log": []
  },
  "history": [
+  {
+   "at": "2026-11-26T23:27:43.046Z",
+   "log": [],
+   "market": {
+    "totalAssets": 300511.666377,
+    "totalDebt": 20311.666377,
+    "utilization": 0.0675,
+    "borrowApr": 0.0335
+   }
+  },
   {
    "at": "2026-11-26T22:27:22.326Z",
    "log": [],

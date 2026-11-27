@@ -1,10 +1,10 @@
 {
  "latest": {
-  "at": "2026-11-26T23:27:40.262Z",
+  "at": "2026-11-27T04:28:36.806Z",
   "keeper": "0x34F6607BE52Fb011C4610aCbEB967dD287d28196",
   "market": {
-   "totalAssets": 300014.694021,
-   "totalDebt": 24230.591796,
+   "totalAssets": 300015.195338,
+   "totalDebt": 24231.093113,
    "utilization": 0.0807,
    "borrowApr": 0.03614
   },
@@ -26,7 +26,7 @@
     "high": 247.16,
     "updatedAt": 1795652605,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    },
    {
@@ -36,7 +36,7 @@
     "high": 274.34942328,
     "updatedAt": 1795650159,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    },
    {
@@ -46,7 +46,7 @@
     "high": 611.74189967,
     "updatedAt": 1795652184,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    },
    {
@@ -66,7 +66,7 @@
     "high": 82.1,
     "updatedAt": 1795654067,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    },
    {
@@ -76,7 +76,7 @@
     "high": 151.53047041,
     "updatedAt": 1795652276,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    },
    {
@@ -86,7 +86,7 @@
     "high": 612.696,
     "updatedAt": 1795654040,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    },
    {
@@ -96,7 +96,7 @@
     "high": 129.185,
     "updatedAt": 1795654430,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    },
    {
@@ -106,7 +106,7 @@
     "high": 381.825,
     "updatedAt": 1795652086,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    }
   ],
@@ -114,9 +114,9 @@
    {
     "account": "0xEF01340206CE5c852c2526827781aC946497F16c",
     "name": "Conservative: AAPL + MSFT at 25% LTV",
-    "debt": 5003.023136,
+    "debt": 5003.126652,
     "borrowPower": 0,
-    "healthFactor": 2.6707172724935404,
+    "healthFactor": 2.670662014654112,
     "collateral": [
      {
       "ticker": "AAPL",
@@ -137,61 +137,61 @@
    {
     "account": "0x2C7e37B7ef7800A8B27cE53A3c3F0df36918d39f",
     "name": "Levered on NVDA at 40% LTV",
-    "debt": 7904.776494,
-    "borrowPower": 9487.639256,
-    "healthFactor": 1.677063105713663,
+    "debt": 7904.94004,
+    "borrowPower": 0,
+    "healthFactor": 1.6770284088075134,
     "collateral": [
      {
       "ticker": "NVDA",
       "balance": 159.06562593,
       "valueLow": 23719.098141,
       "valueHigh": 24103.289123,
-      "live": true
+      "live": false
      }
     ]
    },
    {
     "account": "0x625863EA8B9A28637C6bA39a903aFEAd012d33e1",
     "name": "Levered on MSTR at 30% LTV",
-    "debt": 5903.567186,
-    "borrowPower": 6186.475843,
-    "healthFactor": 1.6075180705159506,
+    "debt": 5903.689328,
+    "borrowPower": 0,
+    "healthFactor": 1.6074848124189776,
     "collateral": [
      {
       "ticker": "MSTR",
       "balance": 256.87077908,
       "valueLow": 20621.586144,
       "valueHigh": 21089.090962,
-      "live": true
+      "live": false
      }
     ]
    },
    {
     "account": "0x68E3AF39a68265DC28961350f43c3ebA964CE425",
-    "debt": 5419.224975,
-    "borrowPower": 6870.082748,
-    "healthFactor": 1.799232435077121,
+    "debt": 5419.337096,
+    "borrowPower": 0,
+    "healthFactor": 1.7991952106461104,
     "collateral": [
      {
       "ticker": "MSTR",
       "balance": 60,
       "valueLow": 4816.8,
       "valueHigh": 4926,
-      "live": true
+      "live": false
      },
      {
       "ticker": "NVDA",
       "balance": 40,
       "valueLow": 5964.606872,
       "valueHigh": 6061.218816,
-      "live": true
+      "live": false
      },
      {
       "ticker": "TSLA",
       "balance": 20,
       "valueLow": 7598,
       "valueHigh": 7636.5,
-      "live": true
+      "live": false
      }
     ]
    }
@@ -199,6 +199,16 @@
   "log": []
  },
  "history": [
+  {
+   "at": "2026-11-27T04:28:36.806Z",
+   "log": [],
+   "market": {
+    "totalAssets": 300015.195338,
+    "totalDebt": 24231.093113,
+    "utilization": 0.0807,
+    "borrowApr": 0.03614
+   }
+  },
   {
    "at": "2026-11-26T23:27:40.262Z",
    "log": [],

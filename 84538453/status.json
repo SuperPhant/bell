@@ -1,10 +1,10 @@
 {
  "latest": {
-  "at": "2026-11-26T23:27:43.046Z",
+  "at": "2026-11-27T04:28:39.670Z",
   "keeper": "0x34F6607BE52Fb011C4610aCbEB967dD287d28196",
   "market": {
-   "totalAssets": 300511.666377,
-   "totalDebt": 20311.666377,
+   "totalAssets": 300512.055744,
+   "totalDebt": 20312.055744,
    "utilization": 0.0675,
    "borrowApr": 0.0335
   },
@@ -26,7 +26,7 @@
     "high": 247.16,
     "updatedAt": 1795652605,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    },
    {
@@ -36,7 +36,7 @@
     "high": 274.34942328,
     "updatedAt": 1795650159,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    },
    {
@@ -46,7 +46,7 @@
     "high": 611.74189967,
     "updatedAt": 1795652184,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    },
    {
@@ -66,7 +66,7 @@
     "high": 82.1,
     "updatedAt": 1795654067,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    },
    {
@@ -76,7 +76,7 @@
     "high": 151.53047041,
     "updatedAt": 1795652276,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    },
    {
@@ -86,7 +86,7 @@
     "high": 612.696,
     "updatedAt": 1795654040,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    },
    {
@@ -96,7 +96,7 @@
     "high": 129.185,
     "updatedAt": 1795654430,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    },
    {
@@ -106,7 +106,7 @@
     "high": 381.825,
     "updatedAt": 1795652086,
     "confirmed": true,
-    "stale": false,
+    "stale": true,
     "paused": false
    }
   ],
@@ -114,9 +114,9 @@
    {
     "account": "0xEF01340206CE5c852c2526827781aC946497F16c",
     "name": "Conservative: AAPL + MSFT at 25% LTV",
-    "debt": 5002.874866,
+    "debt": 5002.970774,
     "borrowPower": 0,
-    "healthFactor": 2.6047660043552248,
+    "healthFactor": 2.604716070444108,
     "collateral": [
      {
       "ticker": "AAPL",
@@ -137,47 +137,47 @@
    {
     "account": "0x2C7e37B7ef7800A8B27cE53A3c3F0df36918d39f",
     "name": "Levered on NVDA at 40% LTV",
-    "debt": 7904.542183,
-    "borrowPower": 8704.61815,
-    "healthFactor": 1.538699594539187,
+    "debt": 7904.693718,
+    "borrowPower": 0,
+    "healthFactor": 1.538670097274476,
     "collateral": [
      {
       "ticker": "NVDA",
       "balance": 145.93783523,
       "valueLow": 21761.545375,
       "valueHigh": 22114.028823,
-      "live": true
+      "live": false
      }
     ]
    },
    {
     "account": "0x625863EA8B9A28637C6bA39a903aFEAd012d33e1",
     "name": "Levered on MSTR at 30% LTV",
-    "debt": 5903.392178,
-    "borrowPower": 5959.665851,
-    "healthFactor": 1.5486287838151482,
+    "debt": 5903.505349,
+    "borrowPower": 0,
+    "healthFactor": 1.5485990963908585,
     "collateral": [
      {
       "ticker": "MSTR",
       "balance": 247.45332386,
       "valueLow": 19865.552839,
       "valueHigh": 20315.917888,
-      "live": true
+      "live": false
      }
     ]
    },
    {
     "account": "0xA01d92d0194e26DB71E917c6d082885aFa825F1d",
-    "debt": 1500.857132,
-    "borrowPower": 2201.665303,
-    "healthFactor": 2.0497117056708634,
+    "debt": 1500.885904,
+    "borrowPower": 0,
+    "healthFactor": 2.0496724126739485,
     "collateral": [
      {
       "ticker": "NVDA",
       "balance": 36.9121612,
       "valueLow": 5504.163259,
       "valueHigh": 5593.31715,
-      "live": true
+      "live": false
      }
     ]
    }
@@ -185,6 +185,16 @@
   "log": []
  },
  "history": [
+  {
+   "at": "2026-11-27T04:28:39.670Z",
+   "log": [],
+   "market": {
+    "totalAssets": 300512.055744,
+    "totalDebt": 20312.055744,
+    "utilization": 0.0675,
+    "borrowApr": 0.0335
+   }
+  },
   {
    "at": "2026-11-26T23:27:43.046Z",
    "log": [],

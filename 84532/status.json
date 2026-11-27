@@ -1,10 +1,10 @@
 {
  "latest": {
-  "at": "2026-11-27T20:31:39.244Z",
+  "at": "2026-11-27T21:31:56.746Z",
   "keeper": "0x34F6607BE52Fb011C4610aCbEB967dD287d28196",
   "market": {
-   "totalAssets": 300016.799661,
-   "totalDebt": 24232.697436,
+   "totalAssets": 300016.900086,
+   "totalDebt": 24232.797861,
    "utilization": 0.0807,
    "borrowApr": 0.03614
   },
@@ -61,10 +61,10 @@
    },
    {
     "ticker": "MSTR",
-    "latest": 82.06,
-    "low": 81.145,
+    "latest": 81.54,
+    "low": 81.54,
     "high": 82.06,
-    "updatedAt": 1795803119,
+    "updatedAt": 1795809722,
     "confirmed": true,
     "stale": false,
     "paused": false
@@ -81,10 +81,10 @@
    },
    {
     "ticker": "SNDK",
-    "latest": 684.44,
-    "low": 665.08,
+    "latest": 680.4,
+    "low": 680.4,
     "high": 684.44,
-    "updatedAt": 1795806941,
+    "updatedAt": 1795808501,
     "confirmed": true,
     "stale": false,
     "paused": false
@@ -114,9 +114,9 @@
    {
     "account": "0xEF01340206CE5c852c2526827781aC946497F16c",
     "name": "Conservative: AAPL + MSFT at 25% LTV",
-    "debt": 5003.457905,
+    "debt": 5003.47864,
     "borrowPower": 10316.160611,
-    "healthFactor": 2.694083520824585,
+    "healthFactor": 2.694072356227746,
     "collateral": [
      {
       "ticker": "AAPL",
@@ -137,9 +137,9 @@
    {
     "account": "0x2C7e37B7ef7800A8B27cE53A3c3F0df36918d39f",
     "name": "Levered on NVDA at 40% LTV",
-    "debt": 7905.46342,
+    "debt": 7905.496182,
     "borrowPower": 9516.031829,
-    "healthFactor": 1.6556803475791682,
+    "healthFactor": 1.6556734860997242,
     "collateral": [
      {
       "ticker": "NVDA",
@@ -153,14 +153,14 @@
    {
     "account": "0x625863EA8B9A28637C6bA39a903aFEAd012d33e1",
     "name": "Levered on MSTR at 30% LTV",
-    "debt": 5904.080207,
-    "borrowPower": 6253.13381,
-    "healthFactor": 1.6065952570823534,
+    "debt": 5904.104675,
+    "borrowPower": 6283.572997,
+    "healthFactor": 1.6065885989733066,
     "collateral": [
      {
       "ticker": "MSTR",
       "balance": 256.87077908,
-      "valueLow": 20843.779368,
+      "valueLow": 20945.243326,
       "valueHigh": 21078.816131,
       "live": true
      }
@@ -168,14 +168,14 @@
    },
    {
     "account": "0x68E3AF39a68265DC28961350f43c3ebA964CE425",
-    "debt": 5419.695907,
-    "borrowPower": 7043.808587,
-    "healthFactor": 1.8261661389925654,
+    "debt": 5419.718367,
+    "borrowPower": 7050.918587,
+    "healthFactor": 1.8261585711285724,
     "collateral": [
      {
       "ticker": "MSTR",
       "balance": 60,
-      "valueLow": 4868.7,
+      "valueLow": 4892.4,
       "valueHigh": 4923.6,
       "live": true
      },
@@ -196,9 +196,23 @@
     ]
    }
   ],
-  "log": []
+  "log": [
+   "prints: new rounds for MSTR, SNDK recorded (0xb03488b3835b0df092e5151a412ce6d4094439eb855cfa36f289c0138d46e90f)"
+  ]
  },
  "history": [
+  {
+   "at": "2026-11-27T21:31:56.746Z",
+   "log": [
+    "prints: new rounds for MSTR, SNDK recorded (0xb03488b3835b0df092e5151a412ce6d4094439eb855cfa36f289c0138d46e90f)"
+   ],
+   "market": {
+    "totalAssets": 300016.900086,
+    "totalDebt": 24232.797861,
+    "utilization": 0.0807,
+    "borrowApr": 0.03614
+   }
+  },
   {
    "at": "2026-11-27T20:31:39.244Z",
    "log": [],

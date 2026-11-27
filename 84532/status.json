@@ -1,10 +1,10 @@
 {
  "latest": {
-  "at": "2026-11-27T17:31:06.528Z",
+  "at": "2026-11-27T18:31:19.743Z",
   "keeper": "0x34F6607BE52Fb011C4610aCbEB967dD287d28196",
   "market": {
-   "totalAssets": 300016.498887,
-   "totalDebt": 24232.396662,
+   "totalAssets": 300016.599201,
+   "totalDebt": 24232.496976,
    "utilization": 0.0807,
    "borrowApr": 0.03614
   },
@@ -114,9 +114,9 @@
    {
     "account": "0xEF01340206CE5c852c2526827781aC946497F16c",
     "name": "Conservative: AAPL + MSFT at 25% LTV",
-    "debt": 5003.395803,
+    "debt": 5003.416515,
     "borrowPower": 10316.155428,
-    "healthFactor": 2.68070620676419,
+    "healthFactor": 2.6806951097893954,
     "collateral": [
      {
       "ticker": "AAPL",
@@ -137,9 +137,9 @@
    {
     "account": "0x2C7e37B7ef7800A8B27cE53A3c3F0df36918d39f",
     "name": "Levered on NVDA at 40% LTV",
-    "debt": 7905.365298,
+    "debt": 7905.398023,
     "borrowPower": 9367.448274,
-    "healthFactor": 1.65514726666841,
+    "healthFactor": 1.6551404150596554,
     "collateral": [
      {
       "ticker": "NVDA",
@@ -153,9 +153,9 @@
    {
     "account": "0x625863EA8B9A28637C6bA39a903aFEAd012d33e1",
     "name": "Levered on MSTR at 30% LTV",
-    "debt": 5904.006926,
+    "debt": 5904.031367,
     "borrowPower": 6253.13381,
-    "healthFactor": 1.5922739159740613,
+    "healthFactor": 1.5922673244157919,
     "collateral": [
      {
       "ticker": "MSTR",
@@ -168,9 +168,9 @@
    },
    {
     "account": "0x68E3AF39a68265DC28961350f43c3ebA964CE425",
-    "debt": 5419.628638,
+    "debt": 5419.651073,
     "borrowPower": 6991.493698,
-    "healthFactor": 1.8223364951154057,
+    "healthFactor": 1.8223289514343242,
     "collateral": [
      {
       "ticker": "MSTR",
@@ -196,11 +196,19 @@
     ]
    }
   ],
-  "log": [
-   "prints: new rounds for AMZN, GOOGL, META, MSFT, MSTR, NVDA, SNDK, SPCX, TSLA recorded (0x68c494414f5d8e8513efc27f879d8fefe3a20dbefe5f9a3d4b9c260f82df7eb6)"
-  ]
+  "log": []
  },
  "history": [
+  {
+   "at": "2026-11-27T18:31:19.743Z",
+   "log": [],
+   "market": {
+    "totalAssets": 300016.599201,
+    "totalDebt": 24232.496976,
+    "utilization": 0.0807,
+    "borrowApr": 0.03614
+   }
+  },
   {
    "at": "2026-11-27T17:31:06.528Z",
    "log": [
